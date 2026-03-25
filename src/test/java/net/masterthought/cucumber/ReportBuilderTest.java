@@ -284,7 +284,7 @@ class ReportBuilderTest extends ReportGenerator {
 
         // given
         setUpWithJson(SAMPLE_JSON);
-
+        configuration.setTrendsStatsFile(trendsFileTmp);
         ReportBuilder builder = new ReportBuilder(jsonReports, configuration);
         Whitebox.setInternalState(builder, "reportResult", new ReportResult(features, configuration));
 
@@ -292,7 +292,7 @@ class ReportBuilderTest extends ReportGenerator {
         Whitebox.invokeMethod(builder, "generatePages", new Trends());
 
         // then
-        assertThat(countHtmlFiles(configuration)).hasSize(9);
+        assertThat(countHtmlFiles(configuration)).hasSize(10);
     }
 
     @Test
